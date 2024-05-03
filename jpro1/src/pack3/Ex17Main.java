@@ -18,12 +18,22 @@ public class Ex17Main {
 		jepum = tv;
 		jepum.volumeControl();
 		
+		//메소드 다형성
 		System.out.println();
-		Ex17Jepum jepumArr[] = {radio, tv};
-		for (Ex17Jepum j : jepumArr) {
-			j.volumeControl();
-		}
+		polyMet(new Ex17Radio());
+		System.out.println();
+		polyMet(new Ex17Tv());
+		
+//		System.out.println();
+//		Ex17Jepum jepumArr[] = {radio, tv};
+//		for (Ex17Jepum j : jepumArr) {
+//			j.volumeControl();
+//		}
 
 	}
 
+	public static void polyMet(Ex17Jepum jepum) {
+		System.out.println("\n메서드 다형성");
+		jepum.volumeControl();
+	}
 }
