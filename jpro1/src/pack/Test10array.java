@@ -11,9 +11,11 @@ public class Test10array {
 		// int ar[];// 배열로 선언 == int []ar
 		int[] ar = new int[5];
 		System.out.println("배열 크기: " + ar.length);
-		ar[0] = 10;
-		ar[1] = 20;
-		ar[4] = ar[0] + ar[1] + ar[2];
+		int []aaaa[] = new int[10][10];
+		aaaa[0][0] = 10;
+		aaaa[1][0] = 20;
+		System.out.println("aaaa : "+aaaa[0][0]);
+//		aaaa[4] = ar[0] + ar[1] + ar[2];
 		System.out.println(ar[4]);
 //		ar[5] =50;
 		int a = 4, b = 4;
