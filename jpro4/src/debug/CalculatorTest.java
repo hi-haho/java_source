@@ -24,7 +24,7 @@ public class CalculatorTest {
 		assertTrue(calculator.plus(8, 4) == 12);
 //		fail("Not yet implemented");
 		
-		int a = 8, b = 8;
+		int a = 8, b = 7;
 		assertEquals(a, b); //변수의 값이 같은지 확인
 		
 		int[] arr = {0,0};
@@ -43,13 +43,13 @@ public class CalculatorTest {
 		assertTrue(calculator.divide(8, 4)==2);
 		//assertTrue(calculator.divide(10, 4)==2.5);
 		
-//		for (int i = 0; i < 1000000; i++) {
-//			System.out.print(i+ " ");
-//		}
+		for (int i = 0; i < 1000000; i++) {
+			System.out.print(i+ " ");
+		}
 		
-		List<String> list = Arrays.asList("a","b","c");
-		Stream<String> listStream = list.stream();
-		listStream.forEach(System.out::println);
+//		List<String> list = Arrays.asList("a","b","c");
+//		Stream<String> listStream = list.stream();
+//		listStream.forEach(System.out::println);
 		
 	}
 
