@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h2>*게시판 글 쓰기*</h2>
+<form action="border.jsp" name="frm">
+<!-- default >  method="get" //a 태그는 무조건 get방식이다. 길이의 제한(브라우저마다 다름)
+정보 보호와 상관없이 get방식으로 작은 데이터를 넘길 수 있다.-->
+<!--method="post"/ post방식은 http는 바디 영역에 담겨서 넘어간다 -->
+<table border="1">
+<!-- 모바일에서는 type에 따라서 자판이 바뀐다. 이메일은 이메일용 자판으로 -->
+	<tr>
+		<td>이름 </td>
+		<td><input type="text" name="writer"></td>
+	</tr>
+	<tr>
+		<td>제목 </td>
+		<td><input type="text" name="subject" placeholder="제목을 주세요"></td>
+	</tr>
+	<tr>
+		<td>나이 </td>
+		<td><input type="number" name="age" value="20"></td>
+	</tr>
+	<tr>
+		<td>이메일 </td>
+		<td><input type="email" name="email"></td>
+	</tr>
+	<tr>
+		<td>글 내용 </td>
+		<td>
+			<textarea type="text" rows="10" cols="50" name="content"></textarea>
+			<!-- textarea tag사이에 공백 넣지도 띄어쓰기도 하지 말것 -->
+		</td>		
+	</tr>
+	<tr>
+		<td colspan="2" align="center">
+			<input type="submit" value="전 송">
+			<input type="reset" value="취소">
+		<!--  </td>
+		<td>비밀번호 : <input type="password" name="pwd" value="123"></td>
+		주소창에 나타난다. >> post방식 사용하자.-->
+	</tr>
+	
+</table>
+</form>
+</body>
+</html>

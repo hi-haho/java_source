@@ -1,0 +1,53 @@
+@charset "UTF-8";
+body {
+	width: 800%;
+	margin: auto;
+}
+
+h2#title {
+	text-align: center;
+}
+li {
+	 list-style: none;
+}
+li a{
+	display: block;
+}
+.head {
+	/*overflow 프로퍼티는 요소 내의 컨텐츠가 너무 커서 요소내에
+	모두 보여주기 힘들때 그것을 어떻게 보여줄지 지정
+	auto :  컨텐츠 량에 다라 스크롤바를 추가할지 자동으로 설정*/
+	overflow: auto;
+}
+ul> li.go_site{
+	float: left;
+	width: 60px;
+	margin-left: 5px;
+	list-style: none;
+}
+/*ul.head{
+	border-style: solid;
+	border-width: 1px;
+	width: 99%;
+}*/
+
+nav{
+	float: left;
+	width: 120px;
+}
+
+#contents{
+	float: left;
+	width: 400px;
+}
+
+#ad{
+	float: left;
+	widows: 200px;
+	font-size: 0.8em;
+}
+
+footer{
+	margin-top:250px;
+	clear: both;
+}

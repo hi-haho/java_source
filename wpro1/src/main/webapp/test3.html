@@ -1,0 +1,124 @@
+<!DOCTYPE html> <!-- html은 트리구조로 연결되어 있다. -->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>이미지 링크</title>
+</head>
+<body>
+table 태그 연습<br>
+<table border="1">
+	<thead>
+		<tr>
+			<th>제목</th><th>제목</th> <!-- <th> 종속태그 -->
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>내용1임을 알림</td><td>내용4444</td>
+		</tr>
+		<tr>
+			<td>내용2222</td><td>&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+<br>
+<!--  bgcolor 태그는 이제 없음/ 부모에서 적용하면 전체 적용된다. 그러나 우선순위는 지역이다.-->
+<table border="2" bgcolor="yellow" style="background-image : url('image/muhan.png')">
+	<caption> 상품자료 </caption>
+	<tr bgcolor="red">
+	<td bgcolor="silver"><b>상품명</b></td>
+	<td>수량</td>
+	<td>단가</td>
+	</tr>
+	<tr>
+	<td>컴퓨터</td>
+	<td align="center">2</td>
+	<td>
+		<img alt="" src="image/jjang.png" width="400">
+	</td>
+	</tr>
+	
+	<tr>
+	<td>a</td>
+	<td>
+		<table border="3">
+			<tr>
+				<td>
+					<a href="https://www.naver.com" target="_new">naver</a>
+				</td>
+				<td>나</td>
+			</tr>
+		</table>
+	</td>
+	<td>
+		c
+	</td>
+	</tr>
+</table>
+<br><!-- 행 병합 row span, 열 병합 col span -->
+<table border="1" width="50%"> <!-- 비율로 움직인다. -->
+	<tr >
+		<td colspan ="2">a</td> <!-- 열병합 -->
+		<td>a</td>
+		<td rowspan="3">c</td> <!-- 행병합 -->
+	</tr>
+	<tr>
+		<td>d</td>
+		<td>e</td>
+		<td>f</td>
+	</tr>
+	<tr>
+		<td>d</td>
+		<td>e</td>
+		<td>f</td>
+	</tr>
+</table>
+
+<hr size="5">
+
+<table border="1" width="50%"> <!-- 비율로 움직인다. -->
+	<tr>
+		<td rowspan="2">1</td>
+		<td colspan="2">2</td>
+		<td rowspan="2">3</td>
+	</tr>
+	<tr>
+		<td colspan="2">4</td>
+	</tr>
+	<tr>
+		<td>5</td>
+		<td>6</td>
+		<td>7</td>
+		<td rowspan="2">8</td>
+	</tr>
+	<tr>
+		<td>9</td>
+		<td colspan="2">10</td>
+	</tr>
+</table>
+<br><br>
+한 화면에서 여러개의 html 문서를 보고자 하는 경우 iframe을 사용
+<br><br>
+<iframe src="test1.html" name="star" width ="99%" height="300"></iframe>
+<br>
+<a href="test2.html" target="star">test2 보기(iframe에서)</a>
+<p>
+이미지 맵 : 이미지를 여러 영역으로 지정해 각 영역마다link를 걸 수 있다.
+<br>
+<img src="image/jjang.png" usemap="#jjanggu">
+<map name="jjanggu">
+	<area shape="rect" coords="0,0,50,50" href="https://www.naver.com">
+	<area shape="rect" coords="400,150,100,200" href="https://www.w3.org">
+</map>
+<pre>
+~
+~
+~
+~
+~
+
+</pre>
+
+
+</body>
+</html>

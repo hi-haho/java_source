@@ -1,0 +1,62 @@
+<!DOCTYPE html> <!-- html은 트리구조로 연결되어 있다. -->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>이미지 링크</title>
+</head>
+<body>
+이미지 출력<br>
+<img title="짱구가족" alt="짱구" src="image/jjang.png" width="300" height="200">
+<br>
+<img alt="" src="https://t1.daumcdn.net/daumtop_deco/images/pctop/2023/logo_daum.png">
+<br>
+<embed src="image/tetris.swf" autostart="true">
+<hr>
+a 태그 : 하이퍼 링크 가능 <br>
+<!-- get방식으로 연결, 하나의 브라우저(프레임)에는 하나의 html문서를 파싱한다.덮어쓰기를 하는 것이다. -->
+<!-- target="_self" 기본값 ; 덮어쓰기-->
+<a href="test1.html"> test1 문서 </a> 보기<br>
+<a href="http://127.0.0.1:80/wpro1/test1.html"> test1 문서( 풀주소 ) </a> 보기<br>
+<a href="test1.html" target="_self">test1 문서(_self) </a> 보기<br>
+
+<!-- 아래는 새창이 나온다. -->
+<a href="test1.html" target="_new">test1 문서(_new) </a> 보기 <br>
+<a href="test1.html" target="_blank">test1 문서(_blank) </a> 보기<br>
+
+<!-- 활용 -->
+<a href="https://www.naver.com">네이버 출발</a><br>
+<a href="https://www.naver.com" target="_new">네이버 출발(_new)</a><br><br>
+
+<a href="test1.html">
+	<img src="image/jjang.png" width="300" height="200">
+</a>보기<br>
+
+<a href="files/book1.xlsx">엑셀 문서</a><br> <!-- 파싱할 능력이 없으면 다운로드시킨다. -->
+<a href="files/code.txt">text 문서</a><br>
+<a href="files/hello.txt">text 문서</a><br> <!-- 경로 및 파일명이 틀린경우, 404에러, 요청된 리소스가 없다. -->
+
+<a href="mailto:from_you_me@naver.com"> 김성하에게 메일 전송</a>
+<!-- 모바일의 경우, 응용프로그램으로 자동으로 바뀐다. -->
+
+<hr><!-- "META-INF","WEB-INF" 파일은 외부에서 호출할 수 없는 영역이다. 중요한 파일은 이곳에 저장해라.-->
+<a href="META-INF/aaa.html">META-INF 폴더 내 파일</a><br>
+<a href="WEB-INF/bbb.html">META-INF 폴더 내 파일</a><br>
+
+<a href="kbs/a.html">kbs 폴더 내 파일</a><br><!-- == <a href="/wpro1/kbs/a.html">kbs 폴더 내 파일</a><br> -->
+<a href="/kbs/a.html">kbs 폴더 내 파일(404)</a><br><!-- 현재 context에 root를 말한다. 404에러 -->
+<br>
+<a href="kbs/sbs/b.html">sbs 폴더 내 파일</a><br>
+<a href="kbs/sbs/tvn/c.html">tvn 폴더 내 파일</a><br>
+<pre>
+.
+.
+.
+.
+.
+.
+.
+
+</pre>
+
+</body>
+</html>
