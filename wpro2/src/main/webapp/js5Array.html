@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>배열</title>
+</head>
+<body>
+	<h2></h2>
+	여러 개의 기억장소에 대해 대표명(배열명)하나만을 부여하고, 배열명[첨자] 형태로 각 기억장소를 구분.
+	<br> 반복처리가 효과적
+	<br>형식 : 배열명 = new Array();
+	<hr>
+	<script type="text/javascript">
+let aa= new Array(); //초기값 줄 수 있는데, 늘어나면 알아서 확장된다.
+aa[0] =10;
+aa[1] =10.5;
+aa[3] ='결과로';
+
+document.write(`aa[0] : ${aa[0]}   aa[1] : ${aa[1]}   aa[3] : ${aa[3]}`);
+//prototype member field >> .length
+document.write(`<br> 전체 크기는 ${aa.length}<br>`);
+document.write('타입은', typeof(aa),'<br> ',typeof(aa[0]),' ',typeof(aa[1]),' ',typeof(aa[3]));
+document.write(' <br>',`aa[2] : ${aa[2]}`);
+
+let i1 = 3; //첨자 변수로 사용할 목적
+document.write('<br>',`aa[i1] : ${aa[i1]}`);
+aa[4] ="안녕";
+aa[5] =true;
+aa[6] ={kbs : 9, sbs:5};
+document.write('<br>', aa[4],' ', aa[5],' ', aa[6]['sbs'],' ', aa[6].kbs);
+document.write('<br>');
+let bb = new Array(100,200,300);
+document.write('<br>', bb[1],' ', bb[2],' ', bb[3],' 크기는',bb.length);
+document.write('<br>');
+
+const cc = []; //비어있는 배열 선언. 배열 리터럴
+cc[0] = 'tom';
+cc.push(23); //prototype method
+cc.push('seoul');
+cc.push(82,1234,5678);
+//cc[100] ='wow';
+// cc[2]= 33; const로 배열을 만들어도 결과가 바뀐다..
+document.write('<br>', cc[0],' ',cc[2], ' ', cc[3]);
+document.write(`<br> cc 배열의 크기는 ${cc.length}`);
+cc[0] = 'tm';
+
+document.write('<hr>');
+let dd = new Array();
+for(let m = 0;m <10 ; m++){
+	dd[m] = m+1;
+}
+for(let m = 0;m <10 ; m++){
+	document.write(dd[m] + " ");
+}
+
+let animal = ['토끼', '사슴', '침팬치'];
+document.write('<br>');
+for(let ani = 0; ani < animal.length; ani +=1){
+document.write( animal[ani] + ' ');
+}
+
+
+
+// ////////////////////////////////////////////////////
+
+
+
+
+document.write('<br><br>');
+let [kbs,mbc] = [9,11];
+document.write(`<br>kbs : ${kbs}  mbc : ${mbc}`);
+document.write('<br>');
+let myarr = [ //배열 요소의 자료형엔 제약이 없다.
+	'안녕',
+	true,
+	3.5,
+	{name: '신기해'},
+	function (){
+		//alert('반가워');
+		document.write('함수실행');
+	}
+];
+document.write(myarr[0]);
+document.write(myarr[3].name);
+myarr[4]();
+document.write('<br>');
+let arrliteral = [
+	[1,2,3],
+	['a','b'],
+	[4,5]
+];
+document.write(arrliteral);
+document.write('<br>',arrliteral[0][0]);
+document.write('<br>',arrliteral[1][0]);
+
+
+document.write('<hr>배열 요소 출력시 for 사용<br>');
+let korea = ['연필','지우개','노트'];
+//방법 1
+for(let i=0; i<korea.length; i++){
+	document.write(korea[i]+" ");
+}
+//방법2
+for(let i of korea){
+	document.write(i+" ");
+}
+//방법3
+for(let i in korea){
+	document.write(korea[i]+" ");
+}
+
+document.write('<br>');
+/*
+//document 객체 요소 값 출력
+let output = '';
+for(let i in document){
+	output +='['+i+']'+ document[i] + '<br>';
+}
+*/
+//배열 요소 제거 :  delete, splice
+let ar = ['I','go','home'];
+delete ar[1]; //go를 삭제, 자리는 남아있음, 배열길이는 그대로
+document.write(ar , ' ' , ar.length);
+
+document.write('<br><br>해당 위치 삭제<br>');
+ar = ['I','go','home'];
+ar.splice(1,1); //인덱스 1부터 1개 삭제
+document.write(ar , ' ' , ar.length);
+
+document.write('<br>');
+//ar.pop(); //배열의 마지막 요소 삭제
+ar.shift(); //배열의 첫번째 요소 삭제
+document.write(ar , ' ' , ar.length);
+
+
+document.write('<br><br>값이 추가된다.');
+ar.push('good');
+ar.splice(2,0, 'kbs', 'mbc');
+document.write('<br>',ar,' ',ar.length);
+
+document.write('<hr>');
+//구조분해 할당 : 배열, 객체의 값들을 추출하여 한번에 여러 변수에 할당하는 기능
+let nums = [1,2,3,4];
+let [a1, a2, a3] = nums;
+document.write(`<br> ${a1}   ${a2}   ${a3}`);
+
+let persons = {name:'이기자', age:22, gender:'남'};
+let {name:irum, age:nai, gender:gen} = persons;
+document.write(`<br> ${irum}   ${nai}   ${gen}`);
+
+let {name, age,gender} = persons; //키와 변수명이 일치하는 경우, 키명만 적어주면 된다.
+document.write(`<br> ${name}   ${age}   ${gender}`);
+
+document.write('<hr> 전개 연산자 : ');
+//spread operator : ...
+//배열이나 객체를 ... 연산자와 함께 사용하면 배열, 객체 내의 값을 분해된 값으로 전달한다.
+let digits = [..."0123abc"];
+document.write(digits + " " + digits.length);
+let a = [1, 2, 3];
+//let b = [0, a, 4];
+let b = [0, ...a, 4]; // 중첩된 배열 요소값에 적용
+document.write("<br>"+b + " " + b.length);
+document.write("<br>");
+const arr1 = [1,2,3];
+const arr2 = [4,5,6];
+const arr3 = arr1.concat(arr2); //배열 결합 (전통적)
+document.write("<br><br>"+ arr3);
+document.write("<br>");
+const arr4 = [...arr1,...arr2];
+document.write("<br><br>"+ arr4);
+
+document.write("<br><br>");
+//arr1.push(arr2); //arr1 값이 변경
+arr1.push(...arr2);
+document.write(arr1);
+
+document.write("<br><br>");
+//배열의 전개 연산자 적용
+const fruits =['apple','peach','melon'];
+const arr5 = [...fruits]; //재열에 답기
+document.write(arr5);
+
+document.write("<br><br>");
+const obj1 = {...fruits}; //객체에 담기
+document.write(obj1, ' ' , obj1[0]);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
