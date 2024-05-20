@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>화살표/콜백함수</title>
+<script type="text/javascript">
+//'use strict' //자동적으로 엄격모드로 
+const sum1= function(a,b){
+	return a+b;
+}
+console.log(`두 수의 합은 ${sum1(3,4)}`);
+
+const sum2 = (a,b) =>a+b;
+console.log(`두 수의 합은 ${sum2(3,4)}`);
+
+let double1 = (n) =>n * 2; //let double1 = n =>n * 2;
+console.log(`곱 ${double1(3)}`);
+
+let sayHi = () => '안녕하세요';//파라미터가 없으면 빼먹으면 안된다.
+console.log(`${sayHi()}`);
+
+//let age = prompt('나이 입력',22); 조건에 의해 수행
+//let welcome = (age <30)?() => "안녕" :() => "반가워";
+//console.log(welcome());
+
+console.clear(); //콘솔비우기
+
+let sunFunc = (a,b)=>{ //표현식 내부의 스테이먼트가 중복일 경우, {}를 사용한다. 반환값이 있으면 return을 사용
+	let result = a+b;
+	return result;
+}
+console.log(`sunFunc 결과 : ${sunFunc(3,4)}`);
+
+console.log('---------');
+//반복문 처리 : for
+function func(...para){ //분해되어 배열처리가 된다.
+	console.log(para.length +' '+para);
+	for(let i =0; i < para.length; i++){
+		console.log(para[i]);
+	}
+	for(let s of para){ //of는 배열인 경우 in은 객체로
+		console.log(s);
+	}
+	console.log('---- Array.forEach(callbackFn [,arg])-----');
+	para.forEach(function(obj){ //배열 클래스의 메서드 (콜백 등록)
+		console.log(obj)
+	});
+	
+	(para.forEach((obj) => console.log(obj)));
+	
+}
+
+func('a','b','c');
+console.log('----콜백 함수-----');
+/*
+function showOk(){ //바로 실행하지 않는 함수 (조건에 의해서 실행된다.)
+	console.log('네 동의합니다');
+}
+	
+function showCancel(){ //바로 실행하지 않는 함수 (조건에 의해서 실행된다.)
+	console.log('아니요');
+}
+function ask(question, yes, no){
+	if(confirm(question)){
+		yes();
+	}else{
+		no();
+	}
+	if(confirm(question)) yes(); else no();
+};
+ ask("동의합니까?", showOk, showCancel);
+*/
+console.log('----setInterval 함수-----');
+/*setInterval() 함수는 어떤 코드를 일정한 시간 간격을 두고 반복해서 실행하고 싶을 때 사용합니다.*/
+//setInterval(() => console.log(new Date()), 2000);
+//function setInterval(handler: TimerHandler, timeout?: number, ...arguments: any[]): number
+//setInterval(수행함수,시간)
+//setInterval(() => console.log(Math.floor(Math.random() * 10)), 2000);
+
+console.log('----setTimeout 함수-----');
+/*어떤 코드를 바로 실행하지 않고 일정 시간 기다린 후 실행해야하는 경우*/
+//간단한 예로, 2초를 기다린 후에 어떤 문자열을 콘솔에 출력 **1번만** 
+//setTimeout(() => console.log("2초 후에 실행됨"), 2000); //setTimeout(수행함수, 시간)
+
+console.log('처리 1');
+setTimeout(function(){
+	console.log('처리2');
+},3000);
+console.log('처리3');
+
+//argument로 화살표 함수 사용
+function abcFunc(su,f1,f2){
+	if(su %2 ===0) f1; else f2;
+}
+
+abcFunc(2,() => console.log('짝수'),() => console.log('홀수'));
+
+
+</script>
+</head>
+<body>
+	<h2>화살표 함수</h2>
+	함수 표현식보다 단순하고 간결한 문법(use strict)으로 함수를 만들 수 있다.
+</body>
+</html>

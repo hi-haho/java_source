@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>이벤트</title>
+<script type="text/javascript">
+function func(){
+	console.log('good');
+	let dateTime = "2026-5-20"; //new Date();
+	let arrDate = dateTime.split('-');
+	
+	console.log(`arrDate : ${arrDate[0]}년 ${arrDate[1]}월 ${arrDate[2]}일`);
+}
+</script>
+</head>
+<body>
+<h2>이벤트 처리 이해</h2>
+<a href="https://www.naver.com">네이버</a><br>
+<a href="javascript:func()">이벤트 처리 함수 호출</a><br>
+<!-- a 태그는 보통 함수를 쓰진않는다. -->
+
+<!-- 사용자가 실제 이벤트를 발생시켰을 때 그 이벤트에 대응하여 처리하는 것  =>  '이벤트 핸들러'라고 한다
+'이벤트 핸들러'는 앞에 'on'을 붙여 주고 이벤트에 대한 동작(함수)을 처리한다.on이벤트 종류 = 핸들러 함수 -->
+
+<a href="javascript:onclik=func();">이벤트(onclik) 처리 함수 호출</a><br>
+<button onclick="func()">이벤트 처리함수 호출</button>
+<br>
+<input type="button" onclick="func()" value="이벤트 처리 함수 호출4">
+
+
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>이벤트</title>
+<script type="text/javascript">
+function func1(){
+	document.getElementById("show").innerText = "전통적인 이벤트 처리";
+}
+
+leta =10;
+let b = {
+		funcNew:function(){
+			document.getElementById("show").innerText = "b 객체의 메소드 처리";
+		},
+		funcNew2:function(){
+			document.getElementById("show").innerHTML = "<h1>b 객체의 멤버 처리</h1>";
+		}
+}
+
+</script>
+
+<script type="text/javascript">
+//window.onload : 자바스크립트에서 페이지가 로드(서버로부터 수신이 완료)되면 자동으로 실행되는 전역 콜백함수
+//즉, 서버가 해당 문서(html)를 모두 넘겨진 후 진행되는 함수이다.
+//만약, 큰 문서일 경우, 실행까지 오래 기다려야한다.
+window.onload = function(){ // 초기화 담당
+	//alert("ok");
+	const exBtn1 = document.getElementById("btn1"); //버튼을 읽어 변수가 기억
+	exBtn1.onclick = function(){ //이벤트 장착
+		document.getElementById("show").innerText = "클릭 1 수행";
+	}
+	
+	const exBtn2 = document.getElementsByName("mybtn"); // 배열
+	console.log(exBtn2.length);
+	exBtn2[0].onclick = function(){
+		document.getElementById("show").innerText = "클릭 2 선택";
+	}
+	exBtn2[1].onclick = function(){
+		document.getElementById("show").innerText = "클릭 3 처리";
+	}
+	
+	exBtn3 = document.getElementsByTagName("input")[6];
+	exBtn3.onclick = function(){
+		document.getElementById("show").innerText = "클릭 4 누름"; //한번 사용하면 계속 유지
+	}
+	//이벤트 연결 및 해제
+	//컴포넌트.addEventListener("이벤트종류".핸들러 함수)
+	document.getElementById("btn5").addEventListener("click", abcFunc);//abcFunc() X> 실행되는 것
+	
+}
+
+function abcFunc(){
+	document.getElementById("show").innerText = "클릭5 이벤트 연결 처리";
+	//이벤트 연결 해제 /다시 버튼눌러도 반응안함
+	document.getElementById("btn5").removeEventListener("click", abcFunc);
+}
+</script>
+</head>
+<body>
+<h2>이벤트 처리</h2>
+<input type="button" value="버튼1" onclick="func1()"><br>
+<input type="button" value="버튼2" onclick="b.funcNew()"><br>
+<input type="button" value="버튼3" onclick="b.funcNew2()"><br>
+<hr>
+w3c는 js,css를 별로 안좋아한다. 아래와 같이 id를 사용해서 문서를 따로 빼자.<br>
+<input type="button" value="클릭1" id="btn1">
+<input type="button" value="클릭2" id="btn2" name="mybtn">
+<input type="button" value="클릭3" id="btn3" name="mybtn">
+<input type="button" value="클릭4" id="btn4">
+<input type="button" value="클릭5" id="btn5">
+<hr>
+<div id="show"></div>
+</body>
+</html>

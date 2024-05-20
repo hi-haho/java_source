@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>간단 계산기</title>
+<!-- ////////////////css////////////////// -->
+<style>
+table {
+	border-collapse: collapse;
+}
+
+td {
+	padding: 5px 10px;
+	text-align: center;
+	cursor: pointer;
+}
+
+input {
+	text-align: right;
+	border: none;
+}
+
+input:focus {
+	outline: none;
+}
+</style>
+
+<!-- ////////////////js////////////////// -->
+<script type="text/javascript">
+
+window.onload= ()=>{
+// display
+	
+	let table = document.getElementById('tab');
+	let tr = table.getElementsByTagName('tr');
+	let sel = tr.getElementsByTagName('td');
+	alert('sel');
+	//showDisplay = document.getElementsByTagName("td").innerText;
+	//showDisplay.onclick = () =>{
+	//	document.getElementById("display").innerText = "클릭 4 누름";
+	//}
+	
+	//for(i = ){
+		
+	//}
+	
+	let su = document.querySelectorAll('table>tr>td');
+	
+	
+	
+// clac
+	let suEle= document.querySelectorAll('a tr:last');
+	document.getElementsByTagName(suEle).innerText
+
+
+	
+// result
+	showDisplay = document.getElementsByTagName("td");
+	//for(let a of showDisplay){};
+}
+
+// reset
+function reset(){
+	document.getElementById("display").value="";
+	document.getElementById("result").value="";
+}
+
+function add(char) {   
+	 var display = document.getElementById('display'); 
+	 display.value += char;
+	
+}
+
+</script>
+</head>
+
+<body>
+
+	<table border="1" id="tab">
+		<tr>
+			<td colspan="4"><input type="text" id="display"
+				placeholder="display"></td>
+		</tr>
+		<tr>
+			<td colspan="4"><input type="text" id="result"
+				placeholder="result"></td>
+		</tr>
+
+		<tr name="a">
+			<td colspan="3" onclick="reset()">AC</td>
+			<td>/</td>
+		</tr>
+
+		<tr name="a">
+			<td>7</td>
+			<td>8</td>
+			<td>9</td>
+			<td>*</td>
+
+		</tr>
+
+		<tr name="a">
+			<td>4</td>
+			<td>5</td>
+			<td>6</td>
+			<td>-</td>
+		</tr>
+
+		<tr name="a">
+			<td>1</td>
+			<td>2</td>
+			<td>3</td>
+			<td>+</td>
+
+		</tr>
+
+		<tr name="a">
+			<td colspan="2">0</td>
+			<td>.</td>
+			<td>=</td>
+		</tr>
+	</table>
+</body>
+</html>

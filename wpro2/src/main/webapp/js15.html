@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+//window.onload = function(){}
+window.onload = () =>{
+	document.getElementById(`${colorG}`).onclick=function(){
+		document.bgColor = "white";
+	}
+	document.getElementById("colorG").onclick= () =>{
+		document.bgColor = "00ff00"; //"0f0"
+	}
+	/*
+	document.getElementById("colorR").onclick=() =>{
+		document.bgColor = "rgb(255,0,0)"; //rgb(100%,0%,0%)
+	}
+	*/
+	//.querySelector("css컬렉터")
+	document.querySelector("#colorR").onclick= () =>{
+		document.bgColor = "rgb(50,0,0)"; //rgb(100%,0%,0%)
+	}
+	
+	document.querySelector(".hello").onclick = () =>{
+		document.querySelector("#show").innerText = "안녕하세요";
+	}
+	
+	document.querySelector("#calc").ondblclick=()=>{
+		let ss = `연산 결과는 ${10+20}`;
+		document.querySelector("#show").innerText=ss;
+	}
+	
+	//hover 기능
+	document.querySelector("#name").onmouseover=()=>{
+		document.querySelector("#show").innerHTML="<h1>난 홍길동</h1>";
+	}
+	document.querySelector("#name").onmouseout=()=>{
+		document.querySelector("#show").innerHTML="";
+	}
+	
+	//a tag: click 이벤트가 기본 등록되어있다.
+	document.querySelector("#daum").onclick = event=>{
+		event.preventDefault(); //해당 태그의 고유 기능 해제
+		console.log(event); //이벤트 정보를 확인할 수 있다.
+		console.log(`${event.x} ${event.y}`); //x좌표
+	}
+	//input 창
+	document.querySelector("#txtAddr").onclick = event=>{
+		event.preventDefault(); //해당 태그의 고유 기능 해제
+		console.log(event); //이벤트 정보를 확인할 수 있다.
+		console.log(`${event.x} ${event.y}`); //x좌표
+	}
+	
+	//select
+	const sdata = document.querySelector("#sel");
+	/*
+	// 다시 눌러도 생성되는 것이다.
+	sdata.onclick = ()=>{
+		document.querySelector("#show").innerHTML= sdata.value;
+		console.log(sdata.value);
+	}
+	*/
+	//console.clear();
+	//변화할 경우에만 이벤트 처리한다.
+	sdata.onchange = ()=>{
+		document.querySelector("#show").innerHTML= sdata.value;
+		console.log(sdata.value);
+	}
+};
+
+</script>
+</head>
+<body>
+<h2>*여러 이벤트 경험*</h2>
+<hr>
+<input type="button" value="흰색" id="colorW">
+<!--
+<input type="button" value="녹록" id="colorG">
+<input type="button" value="적색" id="colorR">
+-->
+<span id="colorG"> 녹색 </span>
+<b id="colorR" style="border: 1px solid black ; cursor: pointer;"> 적색</b>
+<hr>
+<b>*이벤트 종류*</b><br>
+<button id="hello" class = "hello">인사하기 click</button>
+<button id="calc">계산하기 dblclick</button>
+<button id="name">이름알기 mouseover</button>
+<br>
+<a href="https://m.daum.net" id="daum"> 앵커 태그 클릭</a>
+<br>
+<input type="text" id="txtAddr" value="강남구 역삼동">
+<br>
+<select id="sel">
+	<option value="프로그래머">프로그래머</option>
+	<option value="웹퍼블리셔">웹퍼블리셔</option>
+	<option value="프로게이머">프로게이머</option>
+</select>
+
+<div id="show">출력장소1</div>
+
+
+</body>
+</html>
