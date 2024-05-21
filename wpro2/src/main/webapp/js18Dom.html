@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript"> 
+
+//참조
+function abc(){
+	let my = document.getElementById("my");
+	console.log(my.nodeName + " " +my.childNodes[0].nodeValue+" "+ my.firstChild.nodeValue); //H2 DOM 객체 참조 DOM 객체 참조
+	//
+	console.log(my.getAttribute("id")); //my
+	console.log(my.getAttribute("comments")); //이건 속성
+}
+function def(){
+	let arr = document.getElementsByTagName("input");
+	console.log("arr의 크기 : "+arr.length);
+	console.log(arr[0].getAttribute("value"));//id 검색
+	console.log(arr[1].getAttribute("value"));//def 검색
+}
+
+function func(para){
+	let ele = document.createElement("i"); //<i>태그 생성
+	let itext = document.createTextNode(para); //<i>안녕<i/>
+	ele.appendChild(itext);
+	
+	document.getElementById("show").appendChild(ele);
+}
+
+function cleFunc(){
+	let target = document.getElementById("show");
+	//target.removeChild(target.lastChild);
+	//전부 삭제
+	while(target.hasChildNodes()){
+		target.removeChild(target.childNodes[0]);
+	}
+}
+</script>
+</head>
+<body>
+<h1>DOM Test</h1>
+<h2 id="my" comments="이건 속성">DOM 객체 참조</h2>
+<input type = "button" value="id 검색" onclick="abc()"><br>
+<input type = "button" value="def 검색" onclick="def()">
+<hr>
+<h1>요소 생성 및 삭제</h1>
+<button onclick="func('안녕')">요소 생성1</button>
+<button onclick="func('반가워')">요소 생성2</button>
+<button onclick="cleFunc()">요소 삭제</button>
+<br>
+<div id="show"></div>
+
+</body>
+</html>

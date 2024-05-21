@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>dom연습-구구단</title>
+<script type="text/javascript">
+window.onload=()=>{
+	document.getElementById("dan").onchange = function(){
+		
+		const dan = Number(frm.dan.options[frm.dan.selectedIndex].value);
+		const danRes = [];
+		title = frm.dan.options[frm.dan.selectedIndex].text;
+		
+		if(dan === 2){
+			for(i=1; i < 10 ; i++){//구구단 계산
+				danRes[i] = dan +" * "+ i + " = "+ (i*dan);
+			}
+		}else if(dan === 3){
+			for(i=1; i < 10 ; i++){//구구단 계산
+				danRes[i] = dan +" * "+ i + " = "+ (i*dan);			
+			}
+		}else if(dan === 4){
+			for(i=1; i < 10 ; i++){//구구단 계산
+				danRes[i] = dan +" * "+ i + " = "+ (i*dan);			
+			}
+		}else if(dan === 5){
+			for(i=1; i < 10 ; i++){//구구단 계산
+				danRes[i] = dan +" * "+ i + " = "+ (i*dan);			
+			}
+		}else if(dan === 6){
+			for(i=1; i < 10 ; i++){//구구단 계산
+				danRes[i] = dan +" * "+ i + " = "+ (i*dan);			
+			}
+		}else if(dan === 7){
+			for(i=1; i < 10 ; i++){//구구단 계산
+				danRes[i] = dan +" * "+ i + " = "+ (i*dan);			
+			}
+		}else if(dan === 8){
+			for(i=1; i < 10 ; i++){//구구단 계산
+				danRes[i] = dan +" * "+ i + " = "+ (i*dan);			
+			}
+		}else if(dan === 9){
+			for(i=1; i < 10 ; i++){//구구단 계산
+				danRes[i] = dan +" * "+ i + " = "+ (i*dan);			
+			}
+		}
+		console.log(danRes[2]);
+		cal(danRes);
+	}
+}
+
+
+function cal(para){ //값 넣기
+	let row = document.createElement('tr');
+	let col = addCol(para);
+	
+	row.append(col);
+	
+	document.getElementById('myTbody').appendChild(row);
+}
+
+function addCol(para){ //tr 생성
+	let col = document.createElement('td');
+	for(i = 1; i<para.length;i++){
+		//title(title);
+		let res = document.createTextNode(para[i]);
+		//const br = document.createElement('br');
+		//const test = document.createTextNode("")
+		//br.appendChild(test);
+		col.appendChild(res);
+	}
+	return col;
+}
+
+
+
+function title(title){// /단수 제목
+	let h = document.createElement("b");
+	let t = document.createTextNode(title);
+	h.appendChild(t);
+	document.getElementById("title").appendChild(h);
+}
+
+</script>
+
+</head>
+<body>
+	<h2 id="header">구구단 출력</h2>
+	<form action="#" name="frm">
+		단 : <select name="dan" id="dan">
+			<option value="">단수 선택</option>
+			<option value="2">2단</option>
+			<option value='3'>3단</option>
+			<option value='4'>4단</option>
+			<option value='5'>5단</option>
+			<option value='6'>6단</option>
+			<option value='7'>7단</option>
+			<option value='8'>8단</option>
+			<option value='9'>9단</option>
+		</select> <br> 
+		<table id="myTable" border='1'>
+			<thead id="title"></thead>
+			<tbody id="myTbody">
+			</tbody>
+		</table>
+	</form>
+</body>
+</html>
