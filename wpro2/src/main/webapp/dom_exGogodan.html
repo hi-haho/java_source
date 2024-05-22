@@ -1,108 +1,100 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="UTF-8">
-<title>dom연습-구구단</title>
-<script type="text/javascript">
-window.onload=()=>{
-	document.getElementById("dan").onchange = function(){
-		
-		const dan = Number(frm.dan.options[frm.dan.selectedIndex].value);
-		const danRes = [];
-		title = frm.dan.options[frm.dan.selectedIndex].text;
-		
-		if(dan === 2){
-			for(i=1; i < 10 ; i++){//구구단 계산
-				danRes[i] = dan +" * "+ i + " = "+ (i*dan);
-			}
-		}else if(dan === 3){
-			for(i=1; i < 10 ; i++){//구구단 계산
-				danRes[i] = dan +" * "+ i + " = "+ (i*dan);			
-			}
-		}else if(dan === 4){
-			for(i=1; i < 10 ; i++){//구구단 계산
-				danRes[i] = dan +" * "+ i + " = "+ (i*dan);			
-			}
-		}else if(dan === 5){
-			for(i=1; i < 10 ; i++){//구구단 계산
-				danRes[i] = dan +" * "+ i + " = "+ (i*dan);			
-			}
-		}else if(dan === 6){
-			for(i=1; i < 10 ; i++){//구구단 계산
-				danRes[i] = dan +" * "+ i + " = "+ (i*dan);			
-			}
-		}else if(dan === 7){
-			for(i=1; i < 10 ; i++){//구구단 계산
-				danRes[i] = dan +" * "+ i + " = "+ (i*dan);			
-			}
-		}else if(dan === 8){
-			for(i=1; i < 10 ; i++){//구구단 계산
-				danRes[i] = dan +" * "+ i + " = "+ (i*dan);			
-			}
-		}else if(dan === 9){
-			for(i=1; i < 10 ; i++){//구구단 계산
-				danRes[i] = dan +" * "+ i + " = "+ (i*dan);			
-			}
-		}
-		console.log(danRes[2]);
-		cal(danRes);
-	}
-}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <title>dom연습-구구단</title>
+    <script type="text/javascript">
+        window.onload = () => {
+            document.getElementById("dan").onchange = function () {
+
+                const dan = Number(frm.dan.options[frm.dan.selectedIndex].value);
+                //console.log(dan);
+                const danRes = []; //배열 생성
+                title = frm.dan.options[frm.dan.selectedIndex].text;
+                //console.log(title);
+                
+                for (i = 1; i < 10; i++) {//구구단 계산
+                    danRes[i] = dan + " * " + i + " = " + (i * dan);
+                }
+                //console.log(danRes);
+                cal(danRes, title);
+            }
+        }
 
 
-function cal(para){ //값 넣기
-	let row = document.createElement('tr');
-	let col = addCol(para);
-	
-	row.append(col);
-	
-	document.getElementById('myTbody').appendChild(row);
-}
+        function cal(para, title) { //값 넣기
+            let row = document.createElement('tr');//<tr></tr>
+            let col = addCol(para, title);
+            row.append(col);
 
-function addCol(para){ //tr 생성
-	let col = document.createElement('td');
-	for(i = 1; i<para.length;i++){
-		//title(title);
-		let res = document.createTextNode(para[i]);
-		//const br = document.createElement('br');
-		//const test = document.createTextNode("")
-		//br.appendChild(test);
-		col.appendChild(res);
-	}
-	return col;
-}
+            document.getElementById('myTbody').appendChild(row);
+        }
 
+        function addCol(para, title) { //td 생성
+            let col = document.createElement('td'); //<td></td>
+            ti(title);
+            for (i = 1; i < para.length; i++) {
+                let res = document.createTextNode(para[i]);
+                const br = document.createElement('p'); //<p></P>
+                document.createTextNode(res);
+                br.appendChild(res); //<p>2*1=2</p>
+                col.appendChild(br); //<td><p>2*1=2</p></td>
+            }
+            return col;
+        }
 
+        function ti(title) {// 단수 제목
+            let tr = document.createElement('tr');
+            let td = document.createElement('td');
+            let b = document.createElement('b');
 
-function title(title){// /단수 제목
-	let h = document.createElement("b");
-	let t = document.createTextNode(title);
-	h.appendChild(t);
-	document.getElementById("title").appendChild(h);
-}
+            b.appendChild(document.createTextNode(title));
+            td.appendChild(b);
+            tr.appendChild(td);
 
-</script>
+            document.getElementById("myTbody").appendChild(tr);
+        }
+
+        function claer() {
+            document.getElementById('myTable').text = "";
+        }
+
+    </script>
 
 </head>
+
 <body>
-	<h2 id="header">구구단 출력</h2>
-	<form action="#" name="frm">
-		단 : <select name="dan" id="dan">
-			<option value="">단수 선택</option>
-			<option value="2">2단</option>
-			<option value='3'>3단</option>
-			<option value='4'>4단</option>
-			<option value='5'>5단</option>
-			<option value='6'>6단</option>
-			<option value='7'>7단</option>
-			<option value='8'>8단</option>
-			<option value='9'>9단</option>
-		</select> <br> 
-		<table id="myTable" border='1'>
-			<thead id="title"></thead>
-			<tbody id="myTbody">
-			</tbody>
-		</table>
-	</form>
+    <h2 id="header">구구단 출력</h2>
+    <form action="#" name="frm">
+        <table>
+            <tr>
+                <td>
+                    단 : <select name="dan" id="dan">
+                        <option value="">단수 선택</option>
+                        <option value="2">2단</option>
+                        <option value='3'>3단</option>
+                        <option value='4'>4단</option>
+                        <option value='5'>5단</option>
+                        <option value='6'>6단</option>
+                        <option value='7'>7단</option>
+                        <option value='8'>8단</option>
+                        <option value='9'>9단</option>
+                    </select>
+                </td>
+                <td >
+                    <button onclick="clear()" class="btn btn-warning">지우기</button>
+                </td>
+            </tr>
+        </table>
+        <br> <br>
+        <table id="myTable" border='1'>
+            <tbody id="myTbody">
+            </tbody>
+        </table>
+    </form>
 </body>
+
 </html>

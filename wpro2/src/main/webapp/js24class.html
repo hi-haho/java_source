@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>클래스 연습</title>
+</head>
+<body>
+<h2></h2>
+<script type="text/javascript">
+/*
+ 클래스는 OOP에서 특정 객체를 생성하기 위해 멤버를 정의하는 일종의 설계도, 틀이다.
+ 기존의 prototype을 기반으로 객체를 생성하는 것보다 조금 더 명료하게 객체 작성이 가능하다. 
+ */
+ 
+ class Class1{
+	addr = '서울'; //멤버변수(prototype 속성), let, const X
+	name; //생성자로 값을 받을 때는 생략 가능, 가독성을 위해 적어도된다.
+	
+	constructor(name){ //생성자
+		this.name = name; //각 인스턴스의 멤버 변수로 만들어짐
+	}
+	
+	sayHi(){ //멤버 메소드
+		document.write("<br>",this.name);
+		document.write("<br>",this.addr);
+		let msg = "프로그래머"; //지역변수
+		return "<br> 이름은 " +this.name + " "+ msg;
+	}
+}
+
+
+
+let c1 = new Class1('신기해');
+document.write("<br>",c1," ",typeof Class1," ",typeof c1);//[object Object] function object
+document.write("<br> 주소는 ", c1.addr);
+document.write(c1.sayHi());
+document.write("<br>");
+
+let c2 = new Class1('한국인'); //생성자 오버로딩이 없다.
+document.write(c2.sayHi()); 
+
+class Class2{
+	subject = '자바스크립트'; //공용, 접근 지정자 없다.
+	//constructor(){}; //오버로딩(파라미터가 다른 것) 못한다.
+	constructor(name, nai){
+		this.name=name;
+		this.age=nai;
+	}
+	//printData(){}; //메서드 오버로딩 없다.
+	printData(){
+		document.write(`<br>이름은 ${this.name}이고 나이는 ${this.age}`);
+		document.write(`<br>수강과목은 ${this.subject}이고 나이는 ${this.age}`);
+		//return undefined; //return의 기본값이다.즉, return를 생략해도 undefined를 변환한다. 생략 가능
+	}
+	
+	//getter, setter 사용 이유: private 멤버를 처리하기 위함이다.
+	get subjectMethod(){ //이름은 동적이다. 즉, get-이런식으로 안써도 된다.
+		return this.subject;
+	}
+	get nameAndAddr(){
+		return `${this.name}의 나이는 ${this.age}입니다.`
+	}
+	
+	set setName(name){  //사실 setter는 많이 사용되지 않는다.
+		this.name = name;
+	}
+}
+
+let test1 = new Class2('김밥',22);
+document.write("<br>",test1.printData());
+test1.printData();
+
+document.write("<br>",test1.subject);
+document.write("<br>",test1.name);
+document.write("<br>",test1.age);
+
+test1.name = '홍길동'; //setter역할 
+document.write("<br>",test1.name); //getter역할
+
+/*private 멤버를 사용하지 않는 이상 의미가 없다.*/
+document.write("<br>",test1.subjectMethod); //get은 ()를 사용하지 않는다. / setter 메소드의 이름으로 치환
+document.write("<br>",test1.nameAndAddr);
+test1.setName='공기밥'; //setter는 값을 =을 사용해서 전달한다./ setter 메소드의 이름으로 치환
+document.write("<br>",test1.name);
+
+let test2 = new Class2('주먹밥',22);
+document.write("<br>")
+
+class Class3{
+	#name;  // private 멤버 변수. 모던자바스크립만 지원한다.
+	age;  // public 멤버변수
+	static addr = '서울'; //틀래스이름으로 바로볼 수 있겠지~
+	
+	constructor(name, age){
+		this.#name = name;
+		this.age = age;
+	}
+	get getName(){ //보통은 get name(){} 사용한다. 귀찮아서? 보안상으로?
+		return this.#name;
+	}
+}
+
+const person = new Class3('이기자',23);
+document.write("<br",person);
+document.write("<br>",person.age);
+document.write("<br>",person.name);//undefined
+//document.write("<br>",person.#name); //err
+document.write("<br>",person.getName); //이기자
+document.write("<br>",person.addr); //undefined
+document.write("<br>",Class3.addr); //서울 /static함수이다. 다만 클래스 이름으로 선언한다.
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

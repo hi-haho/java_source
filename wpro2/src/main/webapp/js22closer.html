@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+클로저 : 내부 함수에서 외부 함수의 범위에 대한 접근을 제공한다.
+클로저는 어떤 한수와 해당함수 선언된 렉시컬 환경의 조합이다.
+'상위함수'보다 '하위함수'가 더 오래 살아있는 경우를 말한다. >>내부함수
+
+<hr>
+<script type="text/javascript">
+function func(){
+	let name = 'tom';
+	let no = 1; //지역 변수
+	function displayName(){ //내부 함수
+		console.log(name + no);
+		no++;
+	}
+	displayName();
+}
+
+func();
+func();
+func();
+//클로저 사용
+function makefunc(){
+	let name = 'haha';
+	let no = 1; //지역 변수
+	function displayName(){ //내부 함수
+		console.log(name + no);
+		no++;
+	}
+	return displayName; //내부함수의 주소를 반환하는 것이다. 클로저: 내부함수의 주소를 반환
+}
+
+const myfunc = makefunc(); // displayName 함수의 주소를 치환
+myfunc();
+myfunc();
+//makefunc()();
+
+function makeAdd(x){
+	return function(y){ //함수의 실행 결과가 아닌 함수를 반환하고 있음(주소를 전달)
+		return x+y;
+	}
+}
+
+let tot = makeAdd(5);
+console.log(tot(3));
+
+let tot1 = makeAdd(10);
+console.log(tot(5));
+
+
+</script>
+
+</body>
+</html>
