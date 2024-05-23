@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+window.onload = ()=>{
+	document.querySelector("#btnOk").onclick = function(){
+		start();
+	}
+}
+let xhr;
+
+function start(){
+	//alert("a");
+	xhr = new XMLHttpRequest(); // Ajax 지원 js 객체  /객체를 만들고
+	xhr.open('get','js34text.txt',true); //객체를 열고
+	
+	xhr.onreadystatechange = function(){ //행동하고
+		process();
+	}
+	xhr.send(null); //보내고
+}
+function process(){
+	let data = xhr.responseText;
+	console.log(data); //비동기 방식
+}
+</script>
+</head>
+<body>
+<h2> Ajax test</h2>
+<button id="btnOk"> Ajax원리를 찾아서</button>
+<hr>
+
+<div id="disp"></div>
+
+</body>
+</html>
