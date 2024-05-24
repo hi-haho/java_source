@@ -8,31 +8,116 @@ window.onload = ()=>{
 	document.querySelector("#btnOk").onclick = function(){
 		start();
 	}
+	document.querySelector("#btnOk2").onclick = start;
+	document.querySelector("#btnOk3").onclick = start;
+	document.querySelector("#btnOk4").onclick = start;
+	
+	/*
+	document.querySelector("#btnOk2").onclick = startCsv;
+	document.querySelector("#btnOk3").onclick = startXml;
+	document.querySelector("#btnOk4").onclick = startJson;
+	*/
 }
 let xhr;
 
 function start(){
 	//alert("a");
-	xhr = new XMLHttpRequest(); // Ajax 지원 js 객체  /객체를 만들고
-	xhr.open('get','js34text.txt',true); //객체를 열고
+	xhr = new XMLHttpRequest();// Ajax 지원 js 객체  /객체를 만들고//js와 웹서버와 소통
 	
-	xhr.onreadystatechange = function(){ //행동하고
-		process();
+	//CORS(Cross-Origin Resource Sharing) : sop은 웹 보안의 기본적인 원칙 중 하나
+	//xhr.open('get','js34text.txt',true); //객체를 열고 //true는 비동기방식,false는 동기
+	//xhr.open('get','js34csv.txt',true);//csv읽기
+	xhr.open('get','js34.xml',true); //xml읽기
+	xhr.open('get','js34.json',true); //json읽기
+	
+	xhr.onreadystatechange = function(){ //행동하고 //onreadystatechange 접속상태 확인
+		//alert(xhr.readyState); //.readyState 통신 상태를 확인(물리적) 4가 아닌이상 통신이상
+		if(xhr.readyState === 4){
+			//alert(xhr.status); //파일(경로)없으면 404 / 정상실행200
+			//서버가 post 클라이언트 get > 403
+			//java(jsp)파일에 오류가 있으면 >500
+			if(xhr.status === 200){
+				//비동기 상태의 요청
+				process();
+			}
+			//부분데이터를 읽어서 가져오는 방식
+		}
 	}
 	xhr.send(null); //보내고
 }
 function process(){
+	/*txt 파일인 경우
+	//let data = xhr.responseText; //xml 형식 이외의 문서인 경우 responseText를 사용
+	document.getElementById("#disp").innerHTML = data;
+	*/
+	
+	//csv 파일인 경우
+	//행은 entr로 구분, 열은 콤마(,)로 구분
+	/*
 	let data = xhr.responseText;
-	console.log(data); //비동기 방식
+	let rowData = data.split(String.fromCharCode(13));// Ascii code 13은 enter
+	//alert(rowData.length);
+	let str ="";
+	for(let i=0; i < rowData.length; i++){
+		let colData = rowData[i].split(",");
+		for(let j=0; j < colData.length;j++){
+			str += colData[j] +" ";
+		}
+		str += '<br>';
+	}
+	document.querySelector("#disp").innerHTML = str;
+	//console.log(data); //비동기 방식
+	*/
+	/*
+	//xml 파일인 경우
+	//let data = xhr.responseText; //XML 모양의 일반 텍스트 문서 dom처리 불가
+	let data = xhr.responseXML; //XML 객체를 읽음 dom처리 가능
+	//alert(data);
+	let itemNode = data.getElementsByTagName("item");//<item>이 단위가 하나의 노드이다.
+	//alert(itemNode.length);
+	let codeNode = data.getElementsByTagName("code");
+	let sangNode = data.getElementsByTagName("sang");
+	let str = "";
+	for(let i=0; i<itemNode.length; i++){
+		//str += data.getElementsByTagName("code")[i];
+		str+=codeNode[i].childNodes[0].nodeValue+" ";
+		str+=sangNode[i].firstChild.nodeValue+" ";
+		str+= codeNode[i].getAttribute("price");
+		str+="<br>";
+	}
+	document.querySelector("#disp").innerHTML = str;
+	*/
+	
+	//json 파일인 경우
+	let data = xhr.responseText;
+	//alert(data);
+	let paraseData = JSON.parse(data); //문자열을 json 객체화하는 것 > 배열처리가 가능해진다.
+	//alert(paraseData); //[object Object]
+	//alert(paraseData.sangpum.length); //3
+	let str ="";
+	for(let i =0; i <paraseData.sangpum.length; i++ ){
+		str += paraseData.sangpum[i].code + " "+
+		paraseData.sangpum[i].sang+"<br>"
+	};
+	document.querySelector("#disp").innerHTML = str;
 }
+
+
+
 </script>
 </head>
 <body>
-<h2> Ajax test</h2>
-<button id="btnOk"> Ajax원리를 찾아서</button>
-<hr>
+	<h2>Ajax test</h2>
+	<button id="btnOk">Ajax원리를 찾아서</button>
+	<br>
+	<button id="btnOk2">CSV 읽기</button>
+	<br>
+	<button id="btnOk3">xml 읽기</button>
+	<br>
+	<button id="btnOk4">json 읽기</button>
+	<hr>
 
-<div id="disp"></div>
+	<div id="disp"></div>
 
 </body>
 </html>

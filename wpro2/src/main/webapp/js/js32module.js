@@ -16,13 +16,7 @@ export let func = function add(a, b){
 	return a+b;
 }
 
-function f1(user){
-	return `안녕? ${user}님`;
-}
-function f2(user){
-	return `반가워 ${user}님`;
-}
-export{f1, f2} //2개 함수 내보내기
+ //2개 함수 내보내기
 
 //default값 내보내기
 //1회만 가능하다.
