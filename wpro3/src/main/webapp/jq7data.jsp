@@ -5,43 +5,32 @@
 <%@page import="java.sql.Connection"%>
 <%@ page language="java" contentType="text/xml; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<jikwons>
 <%
-String gubun = request.getParameter("gubun");
-String name = request.getParameter("name");
-//sangdata 테이블을 읽어 xml형식으로 출력
+request.setCharacterEncoding("utf-8");
+String buser = request.getParameter("buser");
+//System.out.print(buser);
+
 Connection conn =null;
 PreparedStatement pstmt=null;
 ResultSet rs =null;
 
-try{
-	
+try{	
 	Class.forName("org.mariadb.jdbc.Driver");
-	
 	String url="jdbc:mariadb://localhost:3306/test";
 	conn = DriverManager.getConnection(url,"root","123");
-	String sql = "select jikwon_no,jikwon_name,jikwon_jik,jikwon_pay from jikwon";
-	if(gubun.equals("all")){
-		pstmt = conn.prepareStatement(sql);	
-	}else{
-		pstmt = conn.prepareStatement(sql+=" where jikwon_name like ?");
-		pstmt.setString(1, name+"%");
-	}
 	
+	String sql = "select jikwon_no,jikwon_name from jikwon inner join buser on buser_num = buser_no where buser_name=?";
+	pstmt = conn.prepareStatement(sql);
+	pstmt.setString(1,buser);
 	rs=pstmt.executeQuery();
 	
-	//rs.next();
-	//out.print(rs.getString("sang"));
+	String result = "";
 	while(rs.next()){
-%>
-	<jikwon>
-		<sabun><%= rs.getString("jikwon_no") %></sabun>
-		<irum><%= rs.getString("jikwon_name") %></irum>
-		<jik><%= rs.getString("jikwon_jik") %></jik>
-		<pay><%= rs.getString("jikwon_pay") %></pay>
-	</jikwon>
-<%
+		result+="("+rs.getString("jikwon_no")+ " " + rs.getString("jikwon_name")+")";
 	}
+	out.print("<ele>");
+	out.print("<make>"+result+"</make>");
+	out.print("</ele>");
 }catch(Exception e){
 	System.out.println("err : " + e);
 	
@@ -53,8 +42,5 @@ try{
 	}catch(Exception e){
 		System.out.println("close : "+e);
 	}
-	
 }
 %>
-  </jikwons>
-  
