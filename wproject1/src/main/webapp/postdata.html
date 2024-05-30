@@ -1,0 +1,57 @@
+servletEx6Cookie<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+window.onload = function(){
+	let btnOk = document.querySelector("#btnOk");
+	btnOk.addEventListener("click", func);
+}
+
+function func(){
+	if(frm.name.value === "" || frm.addr.value ==="" || frm.age.value ===""){
+		alert("자료 입력");
+		return false;
+	}
+	frm.submit();
+}
+</script>
+</head>
+<body>
+<h2>post 요청</h2>
+<br>
+form tag으로 get 요청
+<form action="post.do" method ="post" name="frm"> <!-- action 자기 마음 -->
+이름 : <input type="text" name ="name" value="한국인"><br>
+주소1 : <input type="text" name ="addr" value="서울시"><br>
+주소2 : <input type="text" name ="addr" value="서대문구"><br>
+<!-- name ="addr" 같음 -->
+
+좋아하는 스포츠는?
+<br><br>
+<input type="checkbox" name="sports" value="야구"> 야구&nbsp;&nbsp;
+<input type="checkbox" name="sports" value="롤" checked="checked"> 롤&nbsp;&nbsp;
+<input type="checkbox" name="sports" value="농구"> 농구
+<br><br>
+자신있는 언어는?
+<br>
+<input type="radio" name="lan" value ="자바" checked="checked"> 자바&nbsp;&nbsp;
+<input type="radio" name="lan" value ="자바스크립트"> 자바스크립트&nbsp;&nbsp;
+<input type="radio"name="lan" value ="파이썬"> 파이썬&nbsp;&nbsp;
+<br><br>
+교통수단은?
+<select name="tr"><!-- multiple="multiple" 가능(중복 선택) -->
+<option>전철</option>
+<option>버스</option>
+<option>도보</option>
+</select>
+
+<input type="hidden" name="edu" value="도토리">
+
+<br><br>
+<input type="submit" value="자료 전송">
+<input type="reset" id ="btnCancel" value="입력 취소">
+</form>
+</body>
+</html>
