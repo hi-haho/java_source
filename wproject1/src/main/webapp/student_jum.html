@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+window.onload = ()=>{
+	document.querySelector("#btnOk").onclick = function(){
+		frm.submit();
+	}
+}
+</script>
+</head>
+<body>
+<h1>성적 입력</h1>
+<form action="jumsu" method="post" name="frm">
+	<label for="num">번호</label> <input type="text" name="num" value="1"><br>
+	<label for="name">이름</label> <input type="text" name="name" value="tom"><br>
+	<label for="kor">국어</label> <input type="text" name="kor" value="50"><br>
+	<label for="eng">영어</label> <input type="text" name="eng"value="50"><br>
+	<input type="button" value="전 송" id="btnOk">
+</form>
+</body>
+</html>

@@ -22,4 +22,12 @@
   	<url-pattern>/Hello.kor</url-pattern>
   	<url-pattern>/dajeong</url-pattern>
   </servlet-mapping>-->
+  <!-- 
+  <session-config>
+  	<session-timeout>60</session-timeout>  세션 유효시간(모든 세션_글로벌)
+  </session-config>
+  -->
+  
+  
+  
 </web-app>

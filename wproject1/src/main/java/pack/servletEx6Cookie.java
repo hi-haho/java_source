@@ -31,7 +31,7 @@ public class servletEx6Cookie extends HttpServlet {
 			for(int i=0; i < cookies.length; i++) {
 			//for(Cookie c : cookies) {
 				String name = cookies[i].getName();
-				out.println("name : " + name);
+				out.println("!!!!name : " + name);
 				if(name.equalsIgnoreCase("id")) {
 					//쿠키값 디코딩(암호 해제)
 					id = URLDecoder.decode(cookies[i].getValue(),"utf-8");
@@ -61,7 +61,7 @@ public class servletEx6Cookie extends HttpServlet {
 		out.close();
 	}
 	
-	//servlet이 만든것
+	//servlet이 만든것 request, response
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");

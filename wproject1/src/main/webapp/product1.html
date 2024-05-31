@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+window.onload = ()=>{
+	document.querySelector("#btnOk").onclick = function(){
+		frm.submit();
+	}
+}
+</script>
+</head>
+<body>
+<h2>* 다정다감 쇼핑몰 *</h2>
+<table>
+	<tr>
+		<td>
+			<img alt="쿠키" src="images/sangpum1.jpg" title="신난다" width="100%">
+		</td>
+		<td>
+<pre>
+샌드 쿠키 8종
+23시 전 주문 시 내일 아침 7시 전 도착 (대구·부산·울산 샛별배송 운영시간 별도 확인)
+-우유, 밀, 대두, 계란, 아황산류 함유
+-이 제품은 우유, 밀, 계란, 대두, 돼지고기, 쇠고기, 호두, 땅콩, 오징어, 복숭아, 닭고기, 아황산류, 토마토, 잣, 메밀, 고등어, 게, 새우, 조개류(굴, 전복, 홍합 포함)를 사용한 제품과 같은 제조시설에서 제조
+-쿠키 별 알러지 유발사항이 다르오니 하단의 한글표시사항을 확인 부탁드립니다.
+가격 : 36,100원
+</pre>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<form action="Cart" name="frm" method="post">
+				<input type="hidden" name="name" value="샌트쿠키">
+				<input type="hidden" name="price" value="36100">
+				<input type="button" id="btnOk" value="장바구니 담기">
+				<input type="button" value="홈으로 이동" onclick="history.back()">
+			</form>
+		</td>
+	</tr>
+</table>
+</body>
+</html>
