@@ -38,7 +38,9 @@ public class jumsu extends HttpServlet {
 			}
 		}
 		jumlist.add(new Students(num,name,kor,eng)); //Students 객체 생성 후 jumlist에 추가
+		
 		session.setAttribute("list", jumlist); // 새션 추가
+		//System.out.println(jumlist);
 		
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();

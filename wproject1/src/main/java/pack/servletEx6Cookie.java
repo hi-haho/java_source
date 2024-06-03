@@ -32,11 +32,11 @@ public class servletEx6Cookie extends HttpServlet {
 			//for(Cookie c : cookies) {
 				String name = cookies[i].getName();
 				out.println("!!!!name : " + name);
-				if(name.equalsIgnoreCase("id")) {
+				if(!name.equalsIgnoreCase("id")) {
 					//쿠키값 디코딩(암호 해제)
 					id = URLDecoder.decode(cookies[i].getValue(),"utf-8");
 				}
-				if(name.equals("pwd")) {
+				if(!name.equals("pwd")) {
 					//쿠키값 디코딩(암호 해제)
 					pwd = URLDecoder.decode(cookies[i].getValue(),"utf-8");
 				}
