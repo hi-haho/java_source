@@ -23,6 +23,8 @@ public class servletEx7Session extends HttpServlet {
 		//서버에서 세션을 보내고 연결이 끊기자마자 카운팅이 시작된다.(적대적 1분이 아님)
 		//카운팅되다가 서버에 클라이언트가 들어오면 다시 1분 시작 > 로그인 유효시간 카운팅(오른쪽 상단)
 		
+		//(jsp경우) session.setAttribute("idkey",id);
+		//session.getMaxInactiveInterval(10);
 		if(session != null) {
 			session.setAttribute("name", "홍길동");
 			//session id 생성 후 서버뿐아니라 클라이언트 컴퓨터의 cookie에도 저장된다.
