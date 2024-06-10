@@ -52,10 +52,11 @@ public class MyLambda5Db {
 			System.out.println("처리1");
 			consumer.accept(rs);
 			System.out.println("처리3");
-			
+			/*
 			rs.close();
 			pstmt.close();
 			conn.close();
+			*/
 		} catch (Exception e) {
 			System.out.println("queryTable err: " + e);
 		}

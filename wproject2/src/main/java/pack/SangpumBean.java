@@ -1,7 +1,7 @@
 package pack;
 
-public class SangpumDTO { //DB에서 받는 데이터
-	private String code, sang, su, dan; 
+public class SangpumBean { //폼 빈 //html의 name이 같아야 폼빈을 사용할 수 있다.
+	private String code,sang,su,dan;
 
 	public String getCode() {
 		return code;
