@@ -1,6 +1,7 @@
 package pack;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -86,11 +87,11 @@ public class ConnPooling {
 			pstmt.setString(2, bean.getSang());
 			pstmt.setString(3, bean.getSu());
 			pstmt.setString(4, bean.getDan());
-			int result = pstmt.executeUpdate();
+			int result = pstmt.executeUpdate(); //실패는  0을 반환
 			
 			if(result == 1) b = true;
 			
-		} catch (Exception e) {
+		}catch (Exception e) {
 			System.out.println("insertData err" + e);
 		}finally {
 			try {
@@ -102,5 +103,103 @@ public class ConnPooling {
 			}
 		}
 		return true;
+	}
+	
+	public SangpumDTO updateData(String code) {
+		//수정을 위해 값을 읽기
+		SangpumDTO dto = null;
+		/*try{
+			
+			conn = ds.getConnection();
+			String sql = "select * from sangdata where code = ?";
+			//injection 해킹 기술을 피하기 위한 Secure coding
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, code);
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				dto = new SangpumDTO();
+				dto.setCode(rs.getString("code"));
+				dto.setSang(rs.getString("sang"));
+				dto.setSu(rs.getString("su"));
+				dto.setDan(rs.getString("dan"));
+			}
+			//rs.next()가 값이 없으면 null을 가지고 간다.
+			
+		}catch (Exception e) {
+			System.out.println("updateData err" + e);
+		}finally {
+			try {
+				if(rs != null)	rs.close();
+				if(pstmt != null)	pstmt.close();
+				if(conn != null)	conn.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+		}
+		
+		return dto;
+		*/
+		String sql = "select * from sangdata where code = ?";
+		try (Connection conn= ds.getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(sql);){
+			pstmt.setString(1, code);
+			ResultSet rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				dto = new SangpumDTO();
+				dto.setCode(rs.getString("code"));
+				dto.setSang(rs.getString("sang"));
+				dto.setSu(rs.getString("su"));
+				dto.setDan(rs.getString("dan"));
+			}
+			//rs.next()가 값이 없으면 null을 가지고 간다.
+		}catch (Exception e) {
+			System.out.println("updateData err" + e);
+		}
+		return dto;
+	}
+	
+	public boolean updateDataOK(SangpumBean bean) {
+		boolean b = false;
+		//System.out.println(b + bean.getSang());
+		String sql = "update sangdata set sang=?, su=?, dan=? where code=?";
+		try (Connection conn= ds.getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(sql);){
+			pstmt.setString(1, bean.getSang());
+			pstmt.setString(2, bean.getSu());
+			pstmt.setString(3, bean.getDan());
+			pstmt.setString(4, bean.getCode());
+			//ResultSet rs =pstmt.executeUpdate(); //실패인 경우 0 반환 (수정한 레코드 수만큼 반환)
+			
+			if(pstmt.executeUpdate() > 0) {
+				b = true;
+			}
+			
+		}catch (Exception e) {
+			// TODO: handle exception
+		}
+		return b;
+	}
+	
+	//삭제
+	public boolean deleteData(String code) {
+		boolean b = false;
+		
+		String sql = "delete from sangdata where code=?";
+		try (Connection conn= ds.getConnection();
+				PreparedStatement pstmt = conn.prepareStatement(sql);){
+				pstmt.setString(1, code);
+				
+				if(pstmt.executeUpdate() > 0) {
+					b = true;
+				}
+				
+			}catch (Exception e) {
+				System.out.println("deleteData err : " + e);
+			}
+		
+		
+		return b;
 	}
 }

@@ -11,10 +11,20 @@
 <script type="text/javascript">
 function funcUp() {
 	//alert('a');
+	let code = prompt("수정할 코드 입력", "");
+	if(code != "" && code != null){
+		location.href="jsp17up.jsp?code=" + code;
+	}
 }
 
 function funcDel() {
 	//alert('b');
+	let code=prompt("삭제할 코드 입력","");
+	if(code != "" && code != null){
+		if(confirm("정말 삭제할까요?")){
+		location.href="jsp17del.jsp?code=" + code;			
+		}
+	}
 }
 </script>
 </head>
