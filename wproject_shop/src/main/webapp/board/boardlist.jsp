@@ -22,6 +22,7 @@ window.onload = () => {
 	document.querySelector("#btnSearch").onclick = function(){
 		if(frm.sword.value === ""){
 			frm.sword.focus();
+			
 			frm.sword.placeholder = "검색어를 입력하세요";
 			return;
 		}
@@ -42,9 +43,10 @@ window.onload = () => {
 		<br><br>
 		<table style="width: 100%">
 			<tr style="background-color: silver;">
-				<th>번호</th><th>제목</th><th>작성자</th><th>작성일</th><th>조회수</th>
+				<th>번호</th><th>제  목</th><th>작성자</th><th>작성일</th><th>조회수</th>
 			</tr>
 			<%
+			
 			try{
 				spage = Integer.parseInt(request.getParameter("page"));
 			}catch(Exception e){
@@ -61,16 +63,23 @@ window.onload = () => {
 			ArrayList<BoardDTO> list = boardMgr.getDataAll(spage,stype,sword); //페이징 + 검색
 			for(int i =0; i<list.size(); i++){
 				dto = (BoardDTO)list.get(i);
-				%>
-				<tr>
-					<td><%=dto.getNum()%></td>
-					<td>
-					<a href="boardcontent.jsp?num=<%=dto.getNum()%>&page=<%=spage %>"><%=dto.getTitle()%></a>
-					</td>
-					<td><%=dto.getName()%></td>
-					<td><%=dto.getBdate()%></td>
-					<td><%=dto.getReadcnt()%></td>
-				</tr>
+				//댓글 들여쓰기 준비 -----
+				int nst = dto.getNested();
+				String tab = "";
+				for(int k = 0 ; k < nst ; k++){
+					tab +="&emsp;";
+				}
+				// ------------------------
+			%>
+			<tr>
+				<td><%=dto.getNum()%></td>
+				<td>
+				<%=tab %><a href="boardcontent.jsp?num=<%=dto.getNum()%>&page=<%=spage %>"><%=dto.getTitle()%></a>
+				</td>
+				<td><%=dto.getName()%></td>
+				<td><%=dto.getBdate()%></td>
+				<td><%=dto.getReadcnt()%></td>
+			</tr>
 			<%
 			}
 			%>
