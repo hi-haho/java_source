@@ -3,7 +3,7 @@ package pack.borad;
 import java.time.LocalDate;
 
 import lombok.Data; //getter, setter, 아규먼트 없는 생성자까지 만들어진다.
-
+//비즈니스 로직(변형)이 들어가있는 데이터
 @Data
 public class BoardFormbean {
 	private String name,pass,mail,title,cont,bip,bdate;

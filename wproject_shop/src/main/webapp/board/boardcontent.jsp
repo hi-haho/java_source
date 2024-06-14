@@ -25,7 +25,7 @@ int readcnt = dto.getReadcnt();
 String adminPass = "*****"; // 로그인 하지 않으면 비밀번호 숨기기
 
 //회원가입 후 로그인에 성공하면 세션을 생성한다고 가정 하고 세션 읽기
-String adminOk = (String)session.getAttribute("adminOk"); 
+String adminOk = (String)session.getAttribute("adminKey"); 
 if(adminOk != null){
 	if(adminOk.equalsIgnoreCase("admin")) adminPass = pass;
 }
