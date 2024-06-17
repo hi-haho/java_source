@@ -38,7 +38,7 @@
 				<td><%=p.getStock() %></td>
 				<td><%=p.getDetail() %></td>
 				<td>
-					<a href="javascript:productDetail(<%=p.getNo() %>)">보기</a>
+					<a href="javascript:productDetail(<%=p.getNo() %>)" class="transition-link">보기</a>
 				</td>
 			</tr>
 			<%
@@ -53,7 +53,7 @@
 	</tr>
 </table>
 <%@ include file="admin_bottom.jsp"%>
-<form action="productDetail.jsp" name="detailForm" method="get">
+<form action="productDetail.jsp" name="detailForm" method="post"><!-- method="get"인 경우, 삭제또한 get 형식으로 전송되어야한다. -->
 	<input type="hidden" name="no">
 </form>
 </body>

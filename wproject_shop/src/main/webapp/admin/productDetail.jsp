@@ -55,5 +55,15 @@ productDTO dto = productMgr.getProduct(no);
 	</tr>
 </table>
 <%@ include file="admin_bottom.jsp"%>
+
+<!-- 수정하기 -->
+<form action="productUpdate.jsp" name="updateForm" method="post">
+	<input type="hidden" name="no">
+</form>
+
+<!-- 삭제하기 -->
+<form action="productproc.jsp?flag=delete" name="delForm" method="post"><!-- method="get" -->
+	<input type="hidden" name="no">
+</form>
 </body>
 </html>

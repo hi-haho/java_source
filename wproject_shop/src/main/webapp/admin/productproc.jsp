@@ -6,15 +6,15 @@
 request.setCharacterEncoding("UTF-8");
 
 //controller 역할
-String flag = request.getParameter("flag");
+String flag = request.getParameter("flag"); //기준값
 boolean result = false;
 
 if(flag.equals("insert")){
 	result = productMgr.insertProduct(request);
 }else if(flag.equals("update")){
-	//result = productMgr.insertProduct(request);
+	result = productMgr.updateProduct(request);
 }else if(flag.equals("delete")){
-	//result = productMgr.insertProduct(request);
+	result = productMgr.deleteProduct(request.getParameter("no"));
 }else{
 	response.sendRedirect("productmanager.jsp");
 }

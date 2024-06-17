@@ -26,3 +26,11 @@ INPUT {
 A:link {text-decoration:none;color:#696969}
 A:hover{text-decoration:yes;color:#66CCFF}
 A:visited {text-decoration:none;color:#330066}
+
+/* 화면 전환*/
+.fade-out {
+    opacity: 0;    /* 투명도 조절   0(투명) ~ 1(불투명) */
+}
+.fade-in {
+    opacity: 1;
+}
