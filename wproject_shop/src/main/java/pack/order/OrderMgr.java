@@ -22,4 +22,8 @@ public class OrderMgr {
 			System.out.println("db 연결 실패 : " + e.getMessage());
 		}
 	}
+	
+	public void insertOrder(OrderBean orderBean) {
+		
+	}
 }
