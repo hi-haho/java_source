@@ -1,6 +1,3 @@
-window.onload=()=>{
-	
-}
 
 function zipCheck(){ //우편 번호 찾기 버튼
 	let url = "zipcheck.jsp?check=y" //찾는 화(y) or 결과화면(n)

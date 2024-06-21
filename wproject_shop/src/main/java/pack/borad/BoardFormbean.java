@@ -19,7 +19,6 @@ public class BoardFormbean {
 		if(month <10) {
 			mon = "0"+month;
 		}
-		
 		this.bdate = year + "-" + mon + "-"+ day;
 	}
 	

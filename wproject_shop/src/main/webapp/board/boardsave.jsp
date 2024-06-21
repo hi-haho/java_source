@@ -3,7 +3,7 @@
 <% request.setCharacterEncoding("UTF-8");%>
 <jsp:useBean id="bean" class="pack.borad.BoardFormbean"/>
 <jsp:setProperty property="*" name="bean"/>
-<jsp:useBean id="boardMgr" class="pack.borad.BoardMgr"></jsp:useBean>
+<jsp:useBean id="boardMgr" class="pack.borad.BoardMgr"/>
 <%
 bean.setBip(request.getRemoteAddr()); //client의 ip address가 등록된다.
 bean.setBdate();

@@ -30,7 +30,7 @@ if(id == null){ //로그인을 안한 경우
 		</script>
 		<%
 	}else if(orderFlag.equals("del")){
-		cartMgr.deleterCart(order);
+		cartMgr.deleteCart(order);
 		%>
 		<script>
 			alert("해당 상품의 주문을 삭제했습니다.");

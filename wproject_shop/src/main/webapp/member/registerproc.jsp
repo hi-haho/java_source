@@ -24,7 +24,5 @@ if(b){
 	out.print("<a href='register.jsp'>회원가입 페이지로 돌아가기</a>");
 }
 %>
-
-
 </body>
 </html>

@@ -29,7 +29,7 @@ public class CartMgr {/*Object로 하면 캐스팅해야한다.*/
 		String product_no = obean.getProduct_no();
 		hCart.put(product_no, obean);
 	}
-	public void deleterCart(OrderBean obean) { //수량 삭제
+	public void deleteCart(OrderBean obean) { //수량 삭제
 		String product_no = obean.getProduct_no();
 		hCart.remove(product_no);
 	}
