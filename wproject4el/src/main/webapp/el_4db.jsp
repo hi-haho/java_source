@@ -1,8 +1,8 @@
-<%@page import="pack.SangpumDTO"%>
+<%@page import="pack.business.SangpumDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- <jsp:useBean id="connUtil" class="pack.ConnUtil"></jsp:useBean>
+ <jsp:useBean id="l connUt" class="w pack.business.ConnUt"></jsp:useBean>
 <!DOCTYPE html>
 <html>
 <head>
