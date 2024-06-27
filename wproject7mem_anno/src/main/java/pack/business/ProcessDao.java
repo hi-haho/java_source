@@ -18,7 +18,9 @@ public class ProcessDao implements ProcessInter {
 		List<DataDto> list = null;
 		
 		try {
-			list = sqlSession.selectList("selectDataAll");
+			SqlMapperInter inter = (SqlMapperInter)sqlSession.getMapper(SqlMapperInter.class);
+			list = inter.selectDataAll();
+			
 		} catch (Exception e) {
 			System.out.println("selectDataAll err : " + e);
 		} finally {
@@ -32,8 +34,9 @@ public class ProcessDao implements ProcessInter {
 		SqlSession sqlSession = factory.openSession();
 		DataDto dto = null;
 		try {
-			dto = sqlSession.selectOne("selectDataPart", id);
-			sqlSession.commit();
+			SqlMapperInter inter = (SqlMapperInter)sqlSession.getMapper(SqlMapperInter.class);
+			dto = inter.selectDatePart(id);
+			
 		} catch (Exception e) {
 			System.out.println("selectPart err : " + e.getMessage());
 			sqlSession.rollback();
@@ -49,7 +52,9 @@ public class ProcessDao implements ProcessInter {
 		SqlSession sqlSession = factory.openSession();
 		
 		try {
-			if(sqlSession.insert("insertData", form)>0) {
+			SqlMapperInter inter = (SqlMapperInter)sqlSession.getMapper(SqlMapperInter.class);
+			if(inter.insertData(form)>0) {
+				
 				b = true;
 				sqlSession.commit();
 			}
@@ -67,11 +72,12 @@ public class ProcessDao implements ProcessInter {
 		boolean b = false;
 		SqlSession sqlSession = factory.openSession();
 		try {
+			SqlMapperInter inter = (SqlMapperInter)sqlSession.getMapper(SqlMapperInter.class);
 			//비밀번호 비교후 수정 여부를 판단
-			DataDto dto = selectPart(form.getId());
+			DataDto dto = inter.selectDatePart(form.getId());
 			if((form.getPasswd()).equals(dto.getPasswd())) {
 				//수정 처리
-				if(sqlSession.update("updateData", form)>0) {
+				if(inter.updateData(form)>0) {
 					 b = true;
 					sqlSession.commit();
 				}
@@ -90,8 +96,9 @@ public class ProcessDao implements ProcessInter {
 	public boolean deleteData(String id) {
 		boolean b = false;
 		SqlSession sqlSession = factory.openSession();
+		SqlMapperInter inter = (SqlMapperInter)sqlSession.getMapper(SqlMapperInter.class);
 		try {
-			int cou = sqlSession.delete("deleteData", id);
+			int cou = inter.deleteData(id);
 			if(cou>0) {
 				b = true;
 				sqlSession.commit();
