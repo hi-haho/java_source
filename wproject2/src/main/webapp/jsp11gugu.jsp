@@ -1,4 +1,4 @@
-<%@page import="pack.Gogodan"%>
+<%@page import="pack.controller.Gogodan"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -24,7 +24,7 @@ for(int a = 0; a < 9; a++){
 <hr>
 ** jsp 액션 태그 중 use bean 사용**<br>
 
-<jsp:useBean id="gugu" class="pack.Gogodan" scope="page"/> <!-- Gogodan gugu = new Gogodan() 과 비슷-->
+<jsp:useBean id="gugu" class="pack.business.Gogodan" scope="page"/> <!-- Gogodan gugu = new Gogodan() 과 비슷-->
 <%--
  Page : 페이지 내에서 지역변수처럼 사용한다. 매번 객체 생성
  Request : http 요청을 WAS가 받아서 웹 브라우저에게 응답할 때까지 변수가 유지되는 경우 사용,매번 객체 생성

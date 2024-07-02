@@ -1,10 +1,10 @@
 <%@page import="org.apache.catalina.startup.ConnectorCreateRule"%>
-<%@page import="pack.SangpumDTO"%>
+<%@page import="pack.controller.SangpumDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<jsp:useBean id="connUtil3" class="pack.ConnUtil3"></jsp:useBean>
+<jsp:useBean id="3 connUti" class="w pack.business.ConnUti"></jsp:useBean>
 <!DOCTYPE html>
 <html>
 <head>

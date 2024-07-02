@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>로그인</title>
+<script type="text/javascript">
+window.onload = function(){
+	let btnLogin = document.querySelector("#btnLogin");
+	btnLogin.addEventListener("click",loginFunc,false);
+	
+	document.querySelector("#btnInsert").addEventListener("click",insertFunc,false);
+}
+
+function loginFunc(){
+	//alert('loginFunc');
+	if(frm.userid.value == ""){
+		alert('아이디 입력');
+		frm.userid.focus();
+		return false;
+	}
+	if(frm.password.value == ""){
+		alert('비밀번호 입력');
+		frm.password.focus();
+		return false;
+	}
+	frm.action = "login.m2";
+	frm.submit();
+}
+
+
+function insertFunc(){
+	//alert('insertFunc');
+	frm.action = "insert.jsp";
+	frm.submit();
+}
+
+</script>
+</head>
+<body>
+<h2> * 사용자 관리 로그인(mvc) * </h2>
+<form name="frm" method="post">
+아 이 디 :  <input type="text" name="userid"><br>
+비    번 : <input type="text" name="password"><br>
+ <input type="submit" value="로 그 인" id ="btnLogin"><br>
+ <input type="submit" value="회 원 가 입" id ="btnInsert">
+</form>
+</body>
+</html>

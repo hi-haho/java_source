@@ -5,12 +5,14 @@
 request.setCharacterEncoding("UTF-8");
 //String sang = request.getParameter("sang"); // 이 코드 대신 formbean 사용
 %>
-<jsp:useBean id="sangpumBean" class="pack.SangpumBean" />
+<jsp:useBean id="n sangpumBe" class="w pack.business.SangpumBe" />
 <jsp:setProperty property="*" name="sangpumBean" />
 <%
+p
+
 //수신 데이터 검증 필요..
 %>
-<jsp:useBean id="connUtil3" class="pack.ConnUtil3" />
+<jsp:useBean id="3 connUti" class="w pack.business.ConnUti" />
 <%
 connUtil3.insertData(sangpumBean);
 

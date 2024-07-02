@@ -12,7 +12,7 @@
 </head>
 <body>
 <pre>
-JSTL은 JavaServer Pages ""Standard Tag Library"의 약어로, Java 코드를 바로 사용하지 않고 HTML 태그(<>) 형태로 직관적인 코딩을 지원하는 라이브러리.
+JSTL은 JavaServer Pages "Standard Tag Library"의 약어로, Java 코드를 바로 사용하지 않고 HTML 태그(<>) 형태로 직관적인 코딩을 지원하는 라이브러리.
 XML 데이터 처리와 조건문, 반복문, 국제화와 지역화와 같은 일을 처리하기 위한 JSP 태그 라이브러리
 자신만의 태그를 추가할 수 있는 기능을 제공합니다.
 빠른 개발이 목적이다!
@@ -31,12 +31,12 @@ XML 데이터 처리와 조건문, 반복문, 국제화와 지역화와 같은 �
 <br>
 <c:remove var="irum"/>
 이름 : <c:out value="${irum}"/>
-
-
 <br>
 <c:remove var="ir" scope="session"/>
 이름 : <c:out value="${ir}"/>
 <br><br>
+
+
 <c:set var="abc" value="${header['user-Agent']}" scope="page"/>
 abc 값은 (현재 사용 중인 브라우저 정보) - <c:out value="${abc}"/>
 <c:set var="su1" value="10"/>
@@ -96,6 +96,8 @@ abc 값은 (현재 사용 중인 브라우저 정보) - <c:out value="${abc}"/>
 		${i} * ${j} &emsp; = ${i * j}<br>
 	</c:forEach>
 </c:forEach>
+<br><br><br>
+<hr>
 <%
 HashMap<String , Object> map = new HashMap<>();
 map.put("name", "신짱구");
@@ -106,12 +108,13 @@ map.put("today", new Date());
 	${i.key} - ${i.value}<br>
 </c:forEach>
 <hr>
-<br>
+<br><br><br>
 ----배열 생성 후 출력--<br>
 <c:set var="arr" value="<%=new int[]{1,2,3,4,5} %>"/>
 <c:forEach var="a" items="${arr}" begin="2" end="4" step="1">
 	${a} &emsp;
 </c:forEach>
+
 <hr>
 **문자열 분할 후 출력**
 <c:forTokens var="animal" items="horse,dog,cat,lion*tiger,pig" delims=",*">

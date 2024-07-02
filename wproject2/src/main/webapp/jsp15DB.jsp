@@ -1,8 +1,8 @@
-<%@page import="pack.jikwonDTO"%>
+<%@page import="pack.controller.jikwonDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<jsp:useBean id="connUtil2" class="pack.ConnUtil2"></jsp:useBean>
+<jsp:useBean id="2 connUti" class="w pack.business.ConnUti"></jsp:useBean>
 <%
 String buser = request.getParameter("buser");
 %>

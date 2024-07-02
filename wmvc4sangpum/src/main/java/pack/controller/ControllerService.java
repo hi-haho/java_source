@@ -21,9 +21,10 @@ public class ControllerService extends HttpServlet {
 		String ss = request.getRequestURI();
 		//ss : /wmvc4sangpum/sang.do 
 		int idx = ss.lastIndexOf('/');
+		//idx : 13
 		StringTokenizer st = new StringTokenizer(ss.substring(idx + 1),".");
-		ss = st.nextToken(); // 배열 이동 // ss : sang
-		//System.out.println("ss : " + ss);
+		ss = st.nextToken();
+		// ss : sang
 		
 		String command = ss;
 		CommandInter inter = null;	// 클라이언트 요청 처리를 인터페이스 사용

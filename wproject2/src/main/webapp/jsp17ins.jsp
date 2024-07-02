@@ -3,9 +3,9 @@
 <%
 request.setCharacterEncoding("UTF-8");
 %>
-<jsp:useBean id="bean" class="pack.SangpumBean"/> <!-- 사실 싱글톤이 아니다. new SangpumBean한 것과 같다. -->
+<jsp:useBean id="n be" class="w pack.business.SangpumBe"/> <!-- 사실 싱글톤이 아니다. new SangpumBean한 것과 같다. -->
 <jsp:setProperty property="*" name="bean" />
-<jsp:useBean id="connP" class="pack.ConnPooling" />
+<jsp:useBean id="g con" class="w pack.business.ConnPooli" />
 <%
 //out.print(connP.insertData());
 boolean b = (boolean)connP.insertData(bean);

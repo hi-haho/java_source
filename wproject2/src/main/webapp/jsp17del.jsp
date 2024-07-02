@@ -3,7 +3,7 @@
 <%
 String code = request.getParameter("code");
 %>
-<jsp:useBean id="connP" class="pack.ConnPooling" scope="page" />
+<jsp:useBean id="g con" class="w pack.business.ConnPooli" scope="page" />
 
 <%
 if(connP.deleteData(code))

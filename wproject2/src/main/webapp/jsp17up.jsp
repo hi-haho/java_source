@@ -1,11 +1,13 @@
-<%@page import="pack.SangpumDTO"%>
+<%@page import="pack.controller.SangpumDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
+p
+
 String code = request.getParameter("code");
 //out.print(code);
 %>
-<jsp:useBean id="connP" class="pack.ConnPooling" />
+<jsp:useBean id="g con" class="w pack.business.ConnPooli" />
 
 <!DOCTYPE html>
 <html>

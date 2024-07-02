@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%request.setCharacterEncoding("UTF-8"); %>
-<jsp:useBean id="bean" class="pack.SangpumBean"></jsp:useBean> <!-- 수정된 값 -->
+<jsp:useBean id="n be" class="w pack.business.SangpumBe"></jsp:useBean> <!-- 수정된 값 -->
 <jsp:setProperty property="*" name="bean"/>
-<jsp:useBean id="connP" class="pack.ConnPooling" scope="page" />
+<jsp:useBean id="g con" class="w pack.business.ConnPooli" scope="page" />
 
 <%
 boolean b = connP.updateDataOK(bean);
